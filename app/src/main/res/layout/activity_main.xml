@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <!-- Declare the ViewModel -->
+        <variable
+            name="viewModel"
+            type="com.example.shoppingapp.viewmodel.ProductViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1A1A1A">
+
+        <!-- Top Bar with App Name, Cart, and Search Icon -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/top_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#1A1A1A"
+            app:contentInsetLeft="16dp"
+            app:contentInsetStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- App Name centered in the toolbar -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/shoppingapp"
+                android:textColor="#4CAF50"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Cart Icon aligned to the right -->
+            <ImageView
+                android:id="@+id/cart_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/cart_image"
+                android:src="@drawable/ic_cart"
+                app:tint="#FFFFFF" />
+
+            <!-- Search Icon aligned to the right -->
+            <ImageView
+                android:id="@+id/search_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="@string/search_image"
+                android:src="@drawable/ic_search"
+                app:tint="#FFFFFF" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <!-- Horizontal Scroll View for Categories -->
+        <HorizontalScrollView
+            android:id="@+id/category_scroll_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/top_toolbar">
+
+            <!-- Linear Layout for Category Buttons -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Category Buttons (All, Mens Clothing, etc.) -->
+                <TextView
+                    android:id="@+id/all_categories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/category_bg"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp"
+                    android:text="@string/all"
+                    android:textColor="#4CAF50"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/mens_clothing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/category_bg"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp"
+                    android:text="@string/men_s_clothing"
+                    android:textColor="#4CAF50"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/jewelry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/category_bg"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp"
+                    android:text="@string/jewelry"
+                    android:textColor="#4CAF50"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/electronics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/category_bg"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp"
+                    android:text="@string/electronics"
+                    android:textColor="#4CAF50"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/womens_clothing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:background="@drawable/category_bg"
+                    android:gravity="center"
+                    android:paddingHorizontal="16dp"
+                    android:text="@string/women_s_clothing"
+                    android:textColor="#4CAF50"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- RecyclerView to display list of products, bound to the ViewModel's LiveData -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/category_scroll_view"
+            tools:layout_editor_absoluteX="10dp"
+            />  <!-- Binding adapter here -->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
