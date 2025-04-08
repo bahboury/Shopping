@@ -2,11 +2,9 @@ package com.example.shoppingapp.ui
 
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shoppingapp.databinding.ActivityMainBinding
 import com.example.shoppingapp.viewmodel.ProductViewModel
